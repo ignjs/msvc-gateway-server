@@ -1,0 +1,8 @@
+# Ignorar el área de trabajo
+/.idea/
+/.vscode/
+/target/
+/bin/
+/out/
+spring-clooud-area.code-workspace
+.DS_Store
