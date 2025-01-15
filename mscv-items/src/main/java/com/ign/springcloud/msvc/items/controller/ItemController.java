@@ -129,7 +129,8 @@ public class ItemController {
 	 *         or a ResponseEntity with a not found status and a message if the item
 	 *         does not exist
 	 */
-	@TimeLimiter(name = "items")
+	@CircuitBreaker(name = "items", fallbackMethod = "getFallbackProductCompletableFuture")
+	@TimeLimiter(name = "items", fallbackMethod = "getFallbackProductCompletableFuture")
 	@GetMapping("/details3/{id}")
 	public CompletableFuture<?> details3(@PathVariable Long id) {
 		/* Optional<Item> itemOptional = service.findAById(id); */
@@ -141,5 +142,21 @@ public class ItemController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body(Collections.singletonMap("message", "No existe el producto"));
 		});
+	}
+
+	/**
+	 * Fallback method to handle exceptions and provide a default response.
+	 *
+	 * @param e the exception that triggered the fallback
+	 * @return a ResponseEntity containing a default Item with a predefined Product
+	 */
+	public CompletableFuture<?> getFallbackProductCompletableFuture(Throwable e) {
+		log.error(e.getMessage());
+		Product product = new Product();
+		product.setCreateAt(LocalDate.now());
+		product.setId(1L);
+		product.setName("Amazon Fire TV Stick");
+		product.setPrice(39.99);
+		return CompletableFuture.completedFuture(new Item(product, 5));
 	}
 }
