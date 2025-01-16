@@ -7,3 +7,8 @@
 spring-clooud-area.code-workspace
 .DS_Store
 config/
+config-server/
+eureka-server/
+msvc-gateway-server/
+msvc-product/
+msvc-items/
