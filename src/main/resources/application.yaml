@@ -17,7 +17,7 @@ resilience4j:
         timeout-duration: 3s
     instances:
       products:
-        base-config: default       
+        base-config: default      
 
 spring:
   security:
