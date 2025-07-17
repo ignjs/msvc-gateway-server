@@ -87,4 +87,4 @@ spring:
         - AddRequestHeader=tokenRequest, ignjs
         - AddResponseHeader=tokenResponse, 121231234
         - AddRequestParameter=name, Ignjs
-        - SetResponseHeader=Content-Type, text/plain 
+        - SetResponseHeader=Content-Type, application/json
