@@ -37,6 +37,15 @@ El archivo de configuración principal se encuentra en `src/main/resources/appli
 - `src/main/resources`: Contiene los archivos de configuración y recursos estáticos.
 - `pom.xml`: Archivo de configuración de Maven.
 
+## Trazabilidad con Zipkin
+
+El proyecto utiliza Zipkin para la trazabilidad distribuida de las solicitudes entre microservicios.  
+Para ejecutar Zipkin usando MySQL como almacenamiento, utiliza el siguiente comando:
+
+```sh
+STORAGE_TYPE=mysql MYSQL_USER=zipkin MYSQL_PASS=zipkin java -jar zipkin.jar
+```
+
 ## Contribuciones
 
 Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request.
